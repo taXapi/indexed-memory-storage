@@ -1,4 +1,4 @@
-import {DefaultMemoryStorage} from '../src/default_memory_storage';
+import {MemoryStorage} from '../src/default_memory_storage';
 
 interface Item {
     primary: string;
@@ -14,7 +14,7 @@ describe('DefaultMemoryStorage', () => {
     it('Should store a item by a key', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new DefaultMemoryStorage<Item>(getter);
+        const store = new MemoryStorage<Item>(getter);
 
         /* When */
         store.add(item1);
@@ -27,7 +27,7 @@ describe('DefaultMemoryStorage', () => {
     it('Should store two items by a key', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new DefaultMemoryStorage<Item>(getter);
+        const store = new MemoryStorage<Item>(getter);
 
         /* When */
         store.addMultiple([item1, item2]);
@@ -43,7 +43,7 @@ describe('DefaultMemoryStorage', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2]);
+        const store = new MemoryStorage<Item>(getter, [getter2]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -85,7 +85,7 @@ describe('DefaultMemoryStorage', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2]);
+        const store = new MemoryStorage<Item>(getter, [getter2]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -127,7 +127,7 @@ describe('DefaultMemoryStorage', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2]);
+        const store = new MemoryStorage<Item>(getter, [getter2]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -162,7 +162,7 @@ describe('DefaultMemoryStorage', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2]);
+        const store = new MemoryStorage<Item>(getter, [getter2]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -180,7 +180,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
 
         /* When */
         store.add(item1);
@@ -205,7 +205,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -246,7 +246,7 @@ describe('DefaultMemoryStorage', () => {
         const getter3 = (i: Item) => i.key3;
         const complexGetter1 = [getter2];
         const complexGetter2 = [getter3];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter1, complexGetter2]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter1, complexGetter2]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -262,11 +262,10 @@ describe('DefaultMemoryStorage', () => {
     it('Should support fetching items with multiple indices including primary', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter1 = [getter];
         const complexGetter2 = [getter3];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter1, complexGetter2]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter1, complexGetter2]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -284,7 +283,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -316,7 +315,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -336,7 +335,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
 
         /* When */
         store.addMultiple([item1, item2, item3, item4]);
@@ -357,7 +356,7 @@ describe('DefaultMemoryStorage', () => {
         const getter = (i: Item) => i.primary;
         const getter2 = [(i: Item) => i.key2];
         const getter3 = [(i: Item) => i.key3];
-        const store = new DefaultMemoryStorage<Item>(getter, [getter2, getter3]);
+        const store = new MemoryStorage<Item>(getter, [getter2, getter3]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -379,7 +378,7 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -394,7 +393,7 @@ describe('DefaultMemoryStorage', () => {
             new Map([
                 [
                     complexGetter,
-                    new Map<string | number, any>([
+                    new Map<string | number, unknown>([
                         ['asdf', new Map([['blaat', new Set([item1.primary, item4.primary])]])],
                         ['string', new Map([['blaat', new Set([item2.primary])]])],
                         [5, new Map([['blaat', new Set([item3.primary])]])],
@@ -409,7 +408,7 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3, getter];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -424,7 +423,7 @@ describe('DefaultMemoryStorage', () => {
             new Map([
                 [
                     complexGetter,
-                    new Map<string | number, any>([
+                    new Map<string | number, unknown>([
                         [
                             'asdf',
                             new Map([
@@ -450,7 +449,7 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3, getter];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -465,7 +464,7 @@ describe('DefaultMemoryStorage', () => {
             new Map([
                 [
                     complexGetter,
-                    new Map<string | number, any>([
+                    new Map<string | number, unknown>([
                         ['asdf', new Map([['blaat', new Map([['4', new Set([item4.primary])]])]])],
                         [5, new Map([['blaat', new Map([['3', new Set([item3.primary])]])]])],
                     ]),
@@ -479,7 +478,7 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3, getter];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
@@ -492,7 +491,7 @@ describe('DefaultMemoryStorage', () => {
         /* Then */
         // expect(store.size).toBe(2);
         expect(allItems).toEqual([item1, item2, item3, item4]);
-        expect(store['indices']).toEqual(new Map([[complexGetter, new Map<string | number, any>()]]));
+        expect(store['indices']).toEqual(new Map([[complexGetter, new Map<string | number, unknown>()]]));
     });
     it('Should return null if indices.length !== keys.length', () => {
         /* Given */
@@ -500,11 +499,10 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3, getter];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
-        const allItems = store.all();
         const items = store.getByIndex(complexGetter, ['asdf', 'blaat', '1', '2']);
 
         /* Then */
@@ -517,11 +515,10 @@ describe('DefaultMemoryStorage', () => {
         const getter2 = (i: Item) => i.key2;
         const getter3 = (i: Item) => i.key3;
         const complexGetter = [getter2, getter3, getter];
-        const store = new DefaultMemoryStorage<Item>(getter, [complexGetter]);
+        const store = new MemoryStorage<Item>(getter, [complexGetter]);
         store.addMultiple([item1, item2, item3, item4]);
 
         /* When */
-        const allItems = store.all();
         const items = store.getByIndex(complexGetter, ['asdf', 'blaat', 'NO_EXIST']);
 
         /* Then */

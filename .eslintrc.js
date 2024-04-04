@@ -1,5 +1,6 @@
 module.exports = {
     env: {
+        jest: true,
         browser: true,
         es2021: true,
     },
@@ -17,5 +18,5 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 'error',
         '@typescript-eslint/no-explicit-any': 'error',
         '@typescript-eslint/no-unused-vars': 'error',
-    }
+    },
 };

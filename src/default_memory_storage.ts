@@ -1,9 +1,9 @@
-import {IndexGetter, MemoryStorage} from './memory_storage';
+import {IndexGetter, IMemoryStorage} from './memory_storage';
 
 type IndicesPath<T, K, P> = Map<K, IndicesPath<T, K, P> | Set<P>>;
 type Indices<T, K, P> = Map<Array<IndexGetter<T, K>>, IndicesPath<T, K, P>>;
 
-export class DefaultMemoryStorage<T, PK = T[keyof T], K = T[keyof T]> implements MemoryStorage<T, PK, K> {
+export class MemoryStorage<T, PK = T[keyof T], K = T[keyof T]> implements IMemoryStorage<T, PK, K> {
     private storage: Map<PK, T> = new Map();
 
     private indices: Indices<T, K, PK>;

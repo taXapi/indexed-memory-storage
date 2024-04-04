@@ -1,4 +1,4 @@
-import {DefaultMemoryStorage} from '../src/default_memory_storage';
+import {MemoryStorage} from '../src/default_memory_storage';
 import {ObservableMemoryStorage, StorageEventType} from '../src/observable_memory_storage';
 
 interface Item {
@@ -15,7 +15,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive an event when an item is added', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
 
@@ -36,7 +36,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive added_multiple events', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
 
@@ -52,7 +52,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive delete events', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
         store.addMultiple([item1, item2, item3, item4]);
@@ -74,7 +74,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive delete_multiple events', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
         store.addMultiple([item1, item2, item3, item4]);
@@ -91,7 +91,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive update events', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
         store.addMultiple([item1, item2, item3, item4]);
@@ -123,7 +123,7 @@ describe('ObservableMemoryStorage', () => {
     it('Should receive update multiple events', () => {
         /* Given */
         const getter = (i: Item) => i.primary;
-        const store = new ObservableMemoryStorage<Item>(new DefaultMemoryStorage(getter));
+        const store = new ObservableMemoryStorage<Item>(new MemoryStorage(getter));
         const listener = jest.fn();
         store.eventsStream.subscribe(listener);
         store.addMultiple([item1, item2, item3, item4]);

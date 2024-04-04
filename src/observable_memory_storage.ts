@@ -1,5 +1,5 @@
 import {Observable, Subject} from 'rxjs';
-import {IndexGetter, MemoryStorage} from './memory_storage';
+import {IndexGetter, IMemoryStorage} from './memory_storage';
 
 export enum StorageEventType {
     ADDED = 'added',
@@ -53,10 +53,10 @@ export type StorageEvent<T> =
     | UpdatedMultipleEvent<T>
     | StorageClearedEvent;
 
-export class ObservableMemoryStorage<T, PK = T[keyof T], K = T[keyof T]> implements MemoryStorage<T, PK, K> {
+export class ObservableMemoryStorage<T, PK = T[keyof T], K = T[keyof T]> implements IMemoryStorage<T, PK, K> {
     private _eventsStream = new Subject<StorageEvent<T>>();
 
-    constructor(private defaultMemoryStorage: MemoryStorage<T, PK, K>) {}
+    constructor(private defaultMemoryStorage: IMemoryStorage<T, PK, K>) {}
 
     public get eventsStream(): Observable<StorageEvent<T>> {
         return this._eventsStream;
