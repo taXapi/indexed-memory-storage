@@ -167,10 +167,18 @@ export class MemoryStorage<T, PK = T[keyof T], K = T[keyof T]> implements IMemor
             return null;
         }
 
-        const sets = indices
-            .map((kf) => this.getByIndex(kf.indices, kf.keys))
-            .filter((set): set is Set<T> => set != null)
-            .sort((a, b) => a.size - b.size);
+        let sets: Set<T>[] = [];
+        for (const kf of indices) {
+            const set = this.getByIndex(kf.indices, kf.keys);
+            if (set === null) {
+                return null;
+            }
+
+            sets.push(set);
+        }
+
+        sets = sets.sort((a, b) => a.size - b.size);
+
         if (sets.length === 0) {
             return null;
         }

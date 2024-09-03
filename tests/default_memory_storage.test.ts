@@ -525,4 +525,22 @@ describe('DefaultMemoryStorage', () => {
         // expect(store.size).toBe(2);
         expect(items).toEqual(null);
     });
+    it('Should return nothing if we didnt find anything with multiple indices', () => {
+        /* Given */
+        const getter = (i: Item) => i.primary;
+        const getter2 = (i: Item) => i.key2;
+        const getter3 = (i: Item) => i.key3;
+        const complexGetter1 = [getter2];
+        const complexGetter2 = [getter3];
+        const store = new MemoryStorage<Item>(getter, [complexGetter1, complexGetter2]);
+        store.addMultiple([item1, item2, item3, item4]);
+
+        /* When */
+        const items = store.getByMultipleIndices([
+            {indices: complexGetter1, keys: ['asdf']},
+            {indices: complexGetter2, keys: ['qqq']},
+        ]);
+
+        expect(items).toEqual(null);
+    });
 });
