@@ -1,6 +1,6 @@
 {
     "name": "@taxapi/indexed-memory-storage",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "keywords": [
         "index",
         "indexed",
@@ -27,14 +27,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/DJWassink/indexed-memory-storage.git"
+        "url": "git+https://github.com/taXapi/indexed-memory-storage.git"
     },
-    "author": "Dirk Jan Wassink",
+    "author": "taXapi",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/DJWassink/indexed-memory-storage/issues"
-    },
-    "homepage": "https://github.com/DJWassink/indexed-memory-storage#readme",
+    "homepage": "https://github.com/taXapi/indexed-memory-storage#readme",
     "jest": {
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
