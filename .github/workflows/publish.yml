@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -28,4 +32,4 @@ jobs:
       - name: Publish to NPM
         run: yarn publish --access=public
         env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
