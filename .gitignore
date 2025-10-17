@@ -6,3 +6,8 @@ npm-debug.log
 yarn-error.log
 coverage
 .rpt2_cache
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
